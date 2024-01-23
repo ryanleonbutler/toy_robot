@@ -1,0 +1,42 @@
+{
+  "name": "toy-robot",
+  "version": "1.0.0",
+  "description": "Toy Robot CLI project",
+  "author": "Ryan Butler <ryanleonbutler@gmail.com>",
+  "bin": {
+    "toy-robot": "./dist/index.js"
+  },
+  "homepage": "https://github.com/ryanleonbutler/toy_robot",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "repository": "ryanleonbutler/toy_robot",
+  "keywords": [
+    "cli"
+  ],
+  "devDependencies": {
+    "@types/jest": "^29.5.11",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jest": "^27.6.3",
+    "eslint-plugin-prettier": "^5.1.3",
+    "jest": "^29.7.0",
+    "prettier": "^3.2.4",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
+  },
+  "scripts": {
+    "build": "npx tsc",
+    "clean": "rm -rf ./node_modules ./build ./dist",
+    "watch": "tsc --watch",
+    "test": "jest --verbose --coverage --config jest.config.json --passWithNoTests",
+    "lint": "eslint --ext '**/*.{ts,tsx}'",
+    "lint:fix": "eslint --fix --ext '**/*.{ts,tsx}'",
+    "format": "prettier --write --config .prettierrc.json '**/*.{ts,tsx,md}'"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "bugs": "https://github.com/ryanleonbutler/toy_robot/issues",
+  "types": "dist/index.d.ts"
+}

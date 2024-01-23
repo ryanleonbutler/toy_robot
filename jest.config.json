@@ -1,0 +1,12 @@
+{
+  "verbose": true,
+  "preset": "ts-jest",
+  "testEnvironment": "node",
+  "collectCoverage": true,
+  "collectCoverageFrom": ["src/*.ts", "src/**/*.ts"],
+  "coverageDirectory": "./coverage",
+  "testPathIgnorePatterns": ["/node_modules/", "/build/"],
+  "coveragePathIgnorePatterns": ["/node_modules/", "/build/"],
+  "coverageReporters": ["text", ["cobertura", { "file": "cobertura-coverage.xml" }], "html"],
+  "transform": { "^.+\\.tsx?$": "ts-jest" }
+}

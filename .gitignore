@@ -1,0 +1,13 @@
+*~
+*#
+.DS_Store
+.attach*
+
+.env
+/node_modules
+/build
+/dist/
+
+*.swp
+.vscode
+*.idea
