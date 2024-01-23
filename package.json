@@ -4,7 +4,7 @@
   "description": "Toy Robot CLI project",
   "author": "Ryan Butler <ryanleonbutler@gmail.com>",
   "bin": {
-    "toy-robot": "./dist/index.js"
+    "toy-robot": "./dist/cli.js"
   },
   "homepage": "https://github.com/ryanleonbutler/toy_robot",
   "license": "MIT",
@@ -28,7 +28,7 @@
   "scripts": {
     "build": "npx tsc",
     "clean": "rm -rf ./node_modules ./build ./dist",
-    "watch": "tsc --watch",
+    "watch": "npx tsc --watch",
     "test": "jest --verbose --coverage --config jest.config.json --passWithNoTests",
     "lint": "eslint --ext '**/*.{ts,tsx}'",
     "lint:fix": "eslint --fix --ext '**/*.{ts,tsx}'",
@@ -38,5 +38,8 @@
     "node": ">=18.0.0"
   },
   "bugs": "https://github.com/ryanleonbutler/toy_robot/issues",
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "commander": "^11.1.0"
+  }
 }
