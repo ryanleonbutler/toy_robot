@@ -90,3 +90,15 @@ Moves the toy robot one position on the table in the direction it is facing
 Options:
   -h, --help  display help for command
 ```
+
+### RIGHT
+
+TODO
+
+### LEFT
+
+TODO
+
+### REPORT
+
+TODO

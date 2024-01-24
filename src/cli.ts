@@ -1,6 +1,6 @@
 import { Command } from 'commander';
 import { moveRobot, placeRobot } from './commands';
-import { getPosition, parsePositionInput, printTable, readTable } from './utils';
+import { getPosition, parsePositionInput, printPosition, printTable, readTable } from './utils';
 
 const program = new Command();
 
@@ -26,6 +26,17 @@ program
       const newPosition = moveRobot(table, position);
       const newTable = placeRobot(newPosition);
       printTable(newTable);
+    }
+  });
+
+program
+  .command('REPORT')
+  .description('Returns the X,Y and F of the robot on the table')
+  .action(() => {
+    const table = readTable();
+    if (table != undefined && Array.isArray(table) && table.length === 5) {
+      const position = getPosition(table);
+      printPosition(position);
     }
   });
 

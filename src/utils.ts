@@ -87,3 +87,7 @@ export const readTable = () => {
 export const printTable = (table: string[][]) => {
   console.log(table.reverse());
 };
+
+export const printPosition = (position: Position) => {
+  console.log(`X: ${position.column}, Y: ${position.row}, F: ${position.direction}`);
+};
