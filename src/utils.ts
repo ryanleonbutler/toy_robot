@@ -1,4 +1,17 @@
-import { Position } from './interfaces';
+import { Direction, Position } from './interfaces';
+import * as fs from 'fs';
+
+const tablePath = './table.json';
+
+export const createNewTable = (): string[][] => {
+  return [
+    ['0', '1', '2', '3', '4'],
+    ['0', '1', '2', '3', '4'],
+    ['0', '1', '2', '3', '4'],
+    ['0', '1', '2', '3', '4'],
+    ['0', '1', '2', '3', '4'],
+  ];
+};
 
 export const parsePositionInput = (postionInput: string): Position => {
   let position: Position = { row: '', column: '', direction: '' };
@@ -14,6 +27,63 @@ export const parsePositionInput = (postionInput: string): Position => {
   return position;
 };
 
-export const printBoard = (board: string[][]) => {
-  console.log(board);
+export const getPosition = (table: string[][]): Position => {
+  const position: Position = { row: '', column: '', direction: '' };
+  try {
+    for (const row of table) {
+      const indexRow = table.indexOf(row);
+      for (const col of row) {
+        const indexCol = row.indexOf(col);
+        switch (col) {
+          case Direction.NORTH:
+            position.row = String(indexRow);
+            position.column = String(indexCol);
+            position.direction = Direction.NORTH;
+            break;
+          case Direction.SOUTH:
+            position.row = String(indexRow);
+            position.column = String(indexCol);
+            position.direction = Direction.SOUTH;
+            break;
+          case Direction.EAST:
+            position.column = String(indexCol);
+            position.row = String(indexRow);
+            position.direction = Direction.EAST;
+            break;
+          case Direction.WEST:
+            position.column = String(indexCol);
+            position.row = String(indexRow);
+            position.direction = Direction.WEST;
+            break;
+          default:
+            break;
+        }
+      }
+    }
+  } catch (error) {
+    console.error(error);
+  }
+  return position;
+};
+
+export const storeTable = (table: string[][]) => {
+  try {
+    fs.writeFileSync(tablePath, JSON.stringify({ table: table }));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const readTable = () => {
+  try {
+    const data = fs.readFileSync(tablePath, 'utf8');
+    const table = JSON.parse(data);
+    return table.table;
+  } catch (error) {
+    console.error('error: Please place robot first with PLACE command');
+  }
+};
+
+export const printTable = (table: string[][]) => {
+  console.log(table.reverse());
 };

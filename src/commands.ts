@@ -1,19 +1,11 @@
-import { Position } from './interfaces';
-import { parsePositionInput } from './utils';
+import { Direction, Position } from './interfaces';
+import { createNewTable, getPosition, storeTable } from './utils';
 
-export const placeRobot = (inputPosition: string): string[][] => {
-  const board: string[][] = [
-    ['0', '1', '2', '3', '4'],
-    ['0', '1', '2', '3', '4'],
-    ['0', '1', '2', '3', '4'],
-    ['0', '1', '2', '3', '4'],
-    ['0', '1', '2', '3', '4'],
-  ];
-  const position: Position = parsePositionInput(inputPosition);
-
+export const placeRobot = (position: Position): string[][] => {
+  const table = createNewTable();
   if (position.row && position.column && position.direction) {
-    for (const row of board) {
-      if (board.indexOf(row) !== Number(position.row)) {
+    for (const row of table) {
+      if (table.indexOf(row) !== Number(position.row)) {
         continue;
       }
       for (const col of row) {
@@ -26,5 +18,27 @@ export const placeRobot = (inputPosition: string): string[][] => {
     }
   }
 
-  return board.reverse();
+  storeTable(table);
+  return table;
+};
+
+export const moveRobot = (table: string[][], position: Position): Position => {
+  try {
+    if (position.direction === Direction.NORTH && Number(position.row) < 4) {
+      position.row = String(Number(position.row) + 1);
+    } else if (position.direction === Direction.SOUTH && Number(position.row) > 0) {
+      position.row = String(Number(position.row) - 1);
+    } else if (position.direction === Direction.EAST && Number(position.column) < 4) {
+      position.column = String(Number(position.column) + 1);
+    } else if (position.direction === Direction.WEST && Number(position.column) > 0) {
+      position.column = String(Number(position.column) - 1);
+    } else {
+      throw Error;
+    }
+  } catch (error) {
+    console.warn('warn: You cannot move off the board. Please change direction with LEFT or RIGHT and try again');
+    return getPosition(table);
+  }
+
+  return position;
 };
