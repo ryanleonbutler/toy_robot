@@ -6,6 +6,14 @@ export const placeZeroZeroNorth = [
   ['NORTH', '1', '2', '3', '4'],
 ];
 
+export const placeFourFourNorth = [
+  ['0', '1', '2', '3', 'NORTH'],
+  ['0', '1', '2', '3', '4'],
+  ['0', '1', '2', '3', '4'],
+  ['0', '1', '2', '3', '4'],
+  ['0', '1', '2', '3', '4'],
+];
+
 export const placeFourFourSouth = [
   ['0', '1', '2', '3', 'SOUTH'],
   ['0', '1', '2', '3', '4'],
@@ -40,13 +48,19 @@ export const placeError = [
 
 export const posZeroZeroNorth = { row: '0', column: '0', direction: 'NORTH' };
 
+export const posZeroZeroSouth = { row: '0', column: '0', direction: 'SOUTH' };
+
 export const posZeroZeroEast = { row: '0', column: '0', direction: 'EAST' };
+
+export const posZeroZeroWest = { row: '0', column: '0', direction: 'WEST' };
 
 export const posZeroOneEast = { row: '0', column: '1', direction: 'EAST' };
 
 export const posOneZeroNorth = { row: '1', column: '0', direction: 'NORTH' };
 
 export const posFourFourSouth = { row: '4', column: '4', direction: 'SOUTH' };
+
+export const posFourFourNorth = { row: '4', column: '4', direction: 'NORTH' };
 
 export const posFourFourWest = { row: '4', column: '4', direction: 'WEST' };
 

@@ -29,9 +29,9 @@
     "build": "npx tsc",
     "clean": "rm -rf ./node_modules ./build ./dist",
     "watch": "npx tsc --watch",
-    "test": "jest --verbose --coverage --config jest.config.json --passWithNoTests",
-    "lint": "eslint --ext '**/*.{ts,tsx}'",
-    "lint:fix": "eslint --fix --ext '**/*.{ts,tsx}'",
+    "test": "jest --config jest.config.json",
+    "lint": "eslint --ext '**/*.{ts,tsx}' ./src/** ./test/**",
+    "lint:fix": "eslint --fix --ext '**/*.{ts,tsx}' ./src/** ./test/**",
     "format": "prettier --write --config .prettierrc.json '**/*.{ts,tsx,md}'"
   },
   "engines": {

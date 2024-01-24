@@ -1,6 +1,7 @@
 import { Command } from 'commander';
-import { moveRobot, placeRobot } from './commands';
+import { moveRobot, placeRobot, rotateRobot } from './commands';
 import { getPosition, parsePositionInput, printPosition, printTable, readTable } from './utils';
+import { RotateDirection } from './interfaces';
 
 const program = new Command();
 
@@ -23,7 +24,33 @@ program
     const table = readTable();
     if (table != undefined && Array.isArray(table) && table.length === 5) {
       const position = getPosition(table);
-      const newPosition = moveRobot(table, position);
+      const newPosition = moveRobot(position);
+      const newTable = placeRobot(newPosition);
+      printTable(newTable);
+    }
+  });
+
+program
+  .command('LEFT')
+  .description('Rotates the robot LEFT 90 degrees without changing the position of the robot')
+  .action(() => {
+    const table = readTable();
+    if (table != undefined && Array.isArray(table) && table.length === 5) {
+      const position = getPosition(table);
+      const newPosition = rotateRobot(RotateDirection.LEFT, position);
+      const newTable = placeRobot(newPosition);
+      printTable(newTable);
+    }
+  });
+
+program
+  .command('RIGHT')
+  .description('Rotates the robot RIGHT 90 degrees without changing the position of the robot')
+  .action(() => {
+    const table = readTable();
+    if (table != undefined && Array.isArray(table) && table.length === 5) {
+      const position = getPosition(table);
+      const newPosition = rotateRobot(RotateDirection.RIGHT, position);
       const newTable = placeRobot(newPosition);
       printTable(newTable);
     }

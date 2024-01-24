@@ -1,5 +1,5 @@
 import { Direction, Position } from './interfaces';
-import { createNewTable, getPosition, storeTable } from './utils';
+import { createNewTable, storeTable } from './utils';
 
 export const placeRobot = (position: Position): string[][] => {
   const table = createNewTable();
@@ -22,7 +22,7 @@ export const placeRobot = (position: Position): string[][] => {
   return table;
 };
 
-export const moveRobot = (table: string[][], position: Position): Position => {
+export const moveRobot = (position: Position): Position => {
   try {
     if (position.direction === Direction.NORTH && Number(position.row) < 4) {
       position.row = String(Number(position.row) + 1);
@@ -37,7 +37,28 @@ export const moveRobot = (table: string[][], position: Position): Position => {
     }
   } catch (error) {
     console.warn('warn: You cannot move off the board. Please change direction with LEFT or RIGHT and try again');
-    return getPosition(table);
+  }
+
+  return position;
+};
+
+export const rotateRobot = (rotateDirection: string, position: Position): Position => {
+  if (rotateDirection === 'LEFT' && position.direction === Direction.NORTH) {
+    position.direction = Direction.WEST;
+  } else if (rotateDirection === 'LEFT' && position.direction === Direction.WEST) {
+    position.direction = Direction.SOUTH;
+  } else if (rotateDirection === 'LEFT' && position.direction === Direction.SOUTH) {
+    position.direction = Direction.EAST;
+  } else if (rotateDirection === 'LEFT' && position.direction === Direction.EAST) {
+    position.direction = Direction.NORTH;
+  } else if (rotateDirection === 'RIGHT' && position.direction === Direction.NORTH) {
+    position.direction = Direction.EAST;
+  } else if (rotateDirection === 'RIGHT' && position.direction === Direction.EAST) {
+    position.direction = Direction.SOUTH;
+  } else if (rotateDirection === 'RIGHT' && position.direction === Direction.SOUTH) {
+    position.direction = Direction.WEST;
+  } else if (rotateDirection === 'RIGHT' && position.direction === Direction.WEST) {
+    position.direction = Direction.NORTH;
   }
 
   return position;

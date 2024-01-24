@@ -40,7 +40,7 @@
 
 ## User guide
 
-### Help
+### --help
 
 ```
 > node dist/cli.js --help
@@ -59,7 +59,7 @@ Commands:
   help [command]  display help for command
 ```
 
-### Place
+### PLACE
 
 ```
 > node dist/cli.js PLACE --help
@@ -78,7 +78,7 @@ Commands:
   help [command]  display help for command
 ```
 
-### Move
+### MOVE
 
 ```
 > node dist/cli.js MOVE --help
@@ -93,12 +93,38 @@ Options:
 
 ### RIGHT
 
-TODO
+```
+> node dist/cli.js RIGHT --help
+
+Usage: toy-robot RIGHT [options]
+
+Rotates the robot RIGHT 90 degrees without changing the position of the robot
+
+Options:
+  -h, --help  display help for command
+```
 
 ### LEFT
 
-TODO
+```
+> node dist/cli.js LEFT --help
+Usage: toy-robot LEFT [options]
+
+Rotates the robot LEFT 90 degrees without changing the position of the robot
+
+Options:
+  -h, --help  display help for command
+```
 
 ### REPORT
 
-TODO
+```
+> node dist/cli.js REPORT --help
+
+Usage: toy-robot REPORT [options]
+
+Returns the X,Y and F of the robot on the table
+
+Options:
+  -h, --help  display help for command
+```

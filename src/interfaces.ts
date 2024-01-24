@@ -10,3 +10,8 @@ export interface Position {
   column: string;
   direction: string;
 }
+
+export enum RotateDirection {
+  LEFT = 'LEFT',
+  RIGHT = 'RIGHT',
+}
