@@ -20,10 +20,15 @@ export const parsePositionInput = (postionInput: string): Position => {
     if (inputItems.length !== 3) {
       throw Error;
     }
+
+    if (!(inputItems[2] in Direction)) {
+      throw Error;
+    }
     position = { row: inputItems[0], column: inputItems[1], direction: inputItems[2] };
   } catch (error) {
     console.warn('warn: Please try entering the position again using the correct format e.g. "0,0,NORTH"');
   }
+
   return position;
 };
 
@@ -80,7 +85,7 @@ export const readTable = () => {
     const table = JSON.parse(data);
     return table.table;
   } catch (error) {
-    console.error('error: Please place robot first with PLACE command');
+    console.warn('warn: Please place robot first with PLACE command');
   }
 };
 

@@ -20,6 +20,7 @@ describe('Commands', () => {
     ['placeZeroZeroNorth', posZeroZeroNorth, placeZeroZeroNorth],
     ['placeFourFourSouth', posFourFourSouth, placeFourFourSouth],
     ['placeError', { row: '', column: '', direction: '' }, placeError],
+    ['placeOutOfBounds', { row: '5', column: '0', direction: 'NORTH' }, placeError],
   ])('placeRobot(%s)', (name, position, expected) => {
     const result = placeRobot(position);
     expect(result).toEqual(expected.reverse());

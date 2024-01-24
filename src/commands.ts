@@ -3,22 +3,34 @@ import { createNewTable, storeTable } from './utils';
 
 export const placeRobot = (position: Position): string[][] => {
   const table = createNewTable();
-  if (position.row && position.column && position.direction) {
-    for (const row of table) {
-      if (table.indexOf(row) !== Number(position.row)) {
-        continue;
-      }
-      for (const col of row) {
-        if (row.indexOf(col) !== Number(position.column)) {
+
+  if (
+    Number(position.row) > 4 ||
+    Number(position.row) < 0 ||
+    Number(position.column) > 4 ||
+    Number(position.column) < 0
+  ) {
+    console.warn(
+      'warn: You cannot place the robot off the board. Please choose a position that is on the board where both X and Y is >= 0 and <= 4'
+    );
+  } else {
+    if (position.row && position.column && position.direction) {
+      for (const row of table) {
+        if (table.indexOf(row) !== Number(position.row)) {
           continue;
-        } else {
-          row[row.indexOf(col)] = position.direction;
+        }
+        for (const col of row) {
+          if (row.indexOf(col) !== Number(position.column)) {
+            continue;
+          } else {
+            row[row.indexOf(col)] = position.direction;
+          }
         }
       }
     }
+    storeTable(table);
   }
 
-  storeTable(table);
   return table;
 };
 
