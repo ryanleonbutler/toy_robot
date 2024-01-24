@@ -42,9 +42,11 @@
 
 ### --help
 
-```
+```bash
 > node dist/cli.js --help
+```
 
+```
 Usage: toy-robot [options] [command]
 
 Toy Robot CLI project
@@ -61,9 +63,11 @@ Commands:
 
 ### PLACE
 
-```
+```bash
 > node dist/cli.js PLACE --help
+```
 
+```
 Usage: toy-robot [options] [command]
 
 Toy Robot CLI project
@@ -80,9 +84,11 @@ Commands:
 
 ### MOVE
 
-```
+```bash
 > node dist/cli.js MOVE --help
+```
 
+```
 Usage: toy-robot MOVE [options]
 
 Moves the toy robot one position on the table in the direction it is facing
@@ -93,9 +99,11 @@ Options:
 
 ### RIGHT
 
-```
+```bash
 > node dist/cli.js RIGHT --help
+```
 
+```
 Usage: toy-robot RIGHT [options]
 
 Rotates the robot RIGHT 90 degrees without changing the position of the robot
@@ -106,8 +114,11 @@ Options:
 
 ### LEFT
 
-```
+```bash
 > node dist/cli.js LEFT --help
+```
+
+```
 Usage: toy-robot LEFT [options]
 
 Rotates the robot LEFT 90 degrees without changing the position of the robot
@@ -118,9 +129,11 @@ Options:
 
 ### REPORT
 
-```
+```bash
 > node dist/cli.js REPORT --help
+```
 
+```
 Usage: toy-robot REPORT [options]
 
 Returns the X,Y and F of the robot on the table
@@ -131,13 +144,12 @@ Options:
 
 ## Testing
 
-```
+```bash
 # script input
-./test.sh
+> ./test.sh
 
 -OR-
 
 # Run the unit tests
-npm run test
+> npm run test
 ```
-
