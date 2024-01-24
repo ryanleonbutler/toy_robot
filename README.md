@@ -128,3 +128,16 @@ Returns the X,Y and F of the robot on the table
 Options:
   -h, --help  display help for command
 ```
+
+## Testing
+
+```
+# script input
+./test.sh
+
+-OR-
+
+# Run the unit tests
+npm run test
+```
+
